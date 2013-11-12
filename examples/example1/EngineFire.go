@@ -8,15 +8,15 @@ import (
 
 type EngineFire struct{ Physics *FSGPhysics }
 
-func (ef *EngineFire) Step(g *grid.Grid, x, y uint32) []*grid.GridUpdate {
+func (ef *EngineFire) Step(g *fsg.Grid, x, y uint32) []*fsg.GridUpdate {
 	if rand.Intn(5) == 1 && y != g.Height && g.Grid[x][y+1].Engine == ef.Physics.Empty {
-		return []*grid.GridUpdate{
-			&grid.GridUpdate{X: x, Y: y + 1, Engine: ef},
-			&grid.GridUpdate{X: x, Y: y, Engine: ef.Physics.Empty},
+		return []*fsg.GridUpdate{
+			&fsg.GridUpdate{X: x, Y: y + 1, Engine: ef},
+			&fsg.GridUpdate{X: x, Y: y, Engine: ef.Physics.Empty},
 		}
 	} else if rand.Intn(10) == 1 {
-		return []*grid.GridUpdate{
-			&grid.GridUpdate{X: x, Y: y, Engine: ef.Physics.Empty},
+		return []*fsg.GridUpdate{
+			&fsg.GridUpdate{X: x, Y: y, Engine: ef.Physics.Empty},
 		}
 	}
 	return nil

@@ -27,7 +27,7 @@ func main() {
 	fmt.Printf("Initializing physics...\n")
 	p := NewFSGPhysics()
 	fmt.Printf("Initializing the grid...\n")
-	g := grid.NewGrid(512, 512, p, surface)
+	g := fsg.NewGrid(512, 512, p, surface)
 
 	g.Run()
 }

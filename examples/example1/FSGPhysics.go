@@ -6,7 +6,7 @@ import (
 )
 
 type FSGPhysics struct {
-	grid.SimplePhysics
+	fsg.SimplePhysics
 
 	Empty *EngineEmpty
 	Sand  *EngineSand
@@ -23,7 +23,7 @@ func NewFSGPhysics() *FSGPhysics {
 	return p
 }
 
-func (p *FSGPhysics) Init(g *grid.Grid) {
+func (p *FSGPhysics) Init(g *fsg.Grid) {
 	sand_center_x := float64(int(g.Width / 2))
 	sand_center_y := float64(int(g.Height / 2))
 
