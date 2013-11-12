@@ -2,6 +2,8 @@ package grid
 
 import (
 	"github.com/banthar/Go-SDL/sdl"
+	"fmt"
+	"runtime"
 )
 
 const (
@@ -50,6 +52,29 @@ func NewGrid(w, h uint32, physics Physics, surface *sdl.Surface) (g *Grid) {
 
 	g.Blit();
 	return
+}
+
+func (g *Grid) Run() {
+	fmt.Printf("Starting Physics Thread...\n")
+	go func() {
+		fmt.Printf("Beginning physics\n")
+		for {
+			g.Step()
+		}
+	}()
+	for {
+		runtime.LockOSThread()
+		for e := sdl.PollEvent(); e != nil; e = sdl.PollEvent() {
+			switch e.(type) {
+			case *sdl.QuitEvent:
+				return
+			case *sdl.MouseButtonEvent:
+				fmt.Printf("Mouse click\n")
+			case *sdl.MouseMotionEvent:
+				fmt.Printf("Mouse Move\n")
+			}
+		}
+	}
 }
 
 func (g *Grid) Step() {
