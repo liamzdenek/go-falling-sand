@@ -12,6 +12,7 @@ type FSGPhysics struct {
 	Sand  *EngineSand
 	Brick *EngineBrick
 	Fire  *EngineFire
+	Water *EngineWater
 }
 
 func NewFSGPhysics() *FSGPhysics {
@@ -20,11 +21,13 @@ func NewFSGPhysics() *FSGPhysics {
 	p.Sand = &EngineSand{p}
 	p.Brick = &EngineBrick{p}
 	p.Fire = &EngineFire{p}
+	p.Water = &EngineWater{p}
 
 	p.BuildableTypes = []fsg.PixelEngine{
 		p.Sand,
 		p.Brick,
 		p.Fire,
+		p.Water,
 		p.Empty,
 	}
 	return p

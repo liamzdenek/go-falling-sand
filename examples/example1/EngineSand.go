@@ -15,10 +15,10 @@ func (es *EngineSand) Step(g *fsg.Grid, x, y uint32) []*fsg.GridUpdate {
 		return nil
 	}
 
-	if g.Grid[x][y-1].Engine == es.Physics.Empty {
+	if g.Grid[x][y-1].Engine == es.Physics.Empty || g.Grid[x][y-1].Engine == es.Physics.Water {
 		return []*fsg.GridUpdate{
 			&fsg.GridUpdate{X: x, Y: y - 1, Engine: es},
-			&fsg.GridUpdate{X: x, Y: y, Engine: es.Physics.Empty},
+			&fsg.GridUpdate{X: x, Y: y, Engine: g.Grid[x][y-1].Engine},
 		}
 	} else {
 		if rand.Intn(2) == 1 {
