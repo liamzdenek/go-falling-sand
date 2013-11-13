@@ -20,6 +20,13 @@ func NewFSGPhysics() *FSGPhysics {
 	p.Sand = &EngineSand{p}
 	p.Brick = &EngineBrick{p}
 	p.Fire = &EngineFire{p}
+
+	p.BuildableTypes = []fsg.PixelEngine{
+		p.Sand,
+		p.Brick,
+		p.Fire,
+		p.Empty,
+	}
 	return p
 }
 

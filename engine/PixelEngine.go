@@ -7,4 +7,5 @@ import (
 type PixelEngine interface {
 	Step(*Grid, uint32, uint32) []*GridUpdate
 	Color() sdl.Color
+	String() string
 }

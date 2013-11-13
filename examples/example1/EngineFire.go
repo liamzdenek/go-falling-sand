@@ -8,6 +8,7 @@ import (
 
 type EngineFire struct{ Physics *FSGPhysics }
 
+func (ef *EngineFire) String() string { return "Fire" }
 func (ef *EngineFire) Step(g *fsg.Grid, x, y uint32) []*fsg.GridUpdate {
 	if rand.Intn(5) == 1 && y != g.Height && g.Grid[x][y+1].Engine == ef.Physics.Empty {
 		return []*fsg.GridUpdate{

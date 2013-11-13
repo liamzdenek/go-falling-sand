@@ -6,6 +6,8 @@ import (
 	"runtime"
 )
 
+const KEY_TAB = 23;
+
 type Grid struct {
 	// consts
 	Width, Height uint32
@@ -16,6 +18,7 @@ type Grid struct {
 	// physics engine
 	Physics Physics
 
+	// the sdl surface that we should blit to
 	Surface *sdl.Surface
 }
 
@@ -50,11 +53,8 @@ func (g *Grid) Run() {
 			switch e.(type) {
 			case *sdl.QuitEvent:
 				return
-			case *sdl.MouseButtonEvent:
-				fmt.Printf("Mouse click\n")
-			case *sdl.MouseMotionEvent:
-				fmt.Printf("Mouse Move\n")
 			}
+			g.Physics.HandleEvent(g, &e);
 		}
 	}
 }

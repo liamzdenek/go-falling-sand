@@ -8,6 +8,8 @@ import (
 
 type EngineSand struct{ Physics *FSGPhysics }
 
+func (es *EngineSand) String() string { return "Sand" }
+
 func (es *EngineSand) Step(g *fsg.Grid, x, y uint32) []*fsg.GridUpdate {
 	if y == 0 {
 		return nil
